@@ -12,7 +12,41 @@
     <header>
       <h1></h1>
     </header>
-    <main></main>
+    <main>
+      <section class="form-area">
+        <form action="post" id="user-form" autocomplete="off">
+          <div class="input-row">
+            <input
+              type="text"
+              name="user-input"
+              id="user-input"
+              required
+              placeholder="Search Location..."
+            />
+          </div>
+          <button type="submit">Search</button>
+        </form>
+        <article class="toggle-units">
+          <!-- <input type="radio" name="user-unit " id="metric" value="metric" />
+          <label class="user-unit active" for="metric">Metric: °C, m/s</label>
+          <input
+            class="user-unit"
+            type="radio"
+            name="user-unit "
+            id="imperial"
+            value="imperial"
+          />
+          <label class="user-unit" for="imperial">Imperial: °F, mph</label> -->
+          <button class="user-unit active" value="metric">
+            Metric: °C, m/s
+          </button>
+          <button class="user-unit" value="imperial">Imperial: °F, mph</button>
+        </article>
+      </section>
+      <section class="display-area">
+        <h2 class="location-name" id="loc-name"></h2>
+      </section>
+    </main>
     <footer>Dev by M_Idi</footer>
     <script src="bundle.js"></script>
   </body>

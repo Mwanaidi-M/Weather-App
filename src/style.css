@@ -3,3 +3,12 @@
   padding: 0;
   box-sizing: border-box;
 }
+.user-unit {
+  background-color: transparent;
+  border: 2px solid red;
+  outline: none;
+  font-size: 2rem;
+}
+.user-unit.active {
+  background-color: aqua;
+}
