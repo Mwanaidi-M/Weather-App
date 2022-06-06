@@ -1,6 +1,9 @@
-import { apiFunctions } from "./modules/api";
 import { formData } from "./modules/form";
+import { displayWeather } from "./modules/dom";
+import { formatDateImg } from "./modules/dateImgFormat";
 
-// apiFunctions.getCurrLocationWeather(233);
-// apiFunctions.toggleTempUnit("imperial", "poland");
+// displayWeather.getCoords("pol");
+displayWeather.getWeatherData();
+// displayWeather.getWeatherData("pol");
+// displayWeather.toggleTempUnit("imperial");
 formData;

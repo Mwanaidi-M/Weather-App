@@ -2,58 +2,56 @@ const apiFunctions = (() => {
   const apiKey = "bd002ea5339cd4addc983023ce9c52e1";
   let defaultLocation = "zanzibar";
 
-  let locationWeatherEndpoint, coordLoc, locLongitude, locLatitude;
+  let locationWeatherEndpoint;
 
   async function getCurrLocationWeather(location = defaultLocation) {
-    locationWeatherEndpoint = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}&units=metric`;
+    locationWeatherEndpoint = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}`;
     try {
       let resolve = await fetch(locationWeatherEndpoint, { mode: "cors" });
       let response = await resolve.json();
 
-      if (response.cod >= 400) {
-        console.log(
-          `${response.message}.Please enter a valid location e.g. Lamu`
-        );
-      } else {
-        coordLoc = response.coord;
-        locLatitude = coordLoc.lat;
-        locLongitude = coordLoc.lon;
-
-        console.log(response);
-        getSevenDayWeather(locLongitude, locLatitude);
-      }
+      return response;
     } catch (error) {
-      console.log(error.message);
+      // console.log(error.message);
+      return error.message;
     }
-    // console.log("well it looks okay");
   }
 
-  async function toggleTempUnit(unit, location = defaultLocation) {
-    locationWeatherEndpoint = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}&units=${unit}`;
+  async function toggleTemp(unit, lat, lon) {
+    locationWeatherEndpoint = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,alerts&appid=${apiKey}&units=${unit}`;
     try {
       let resolve = await fetch(locationWeatherEndpoint, { mode: "cors" });
       let response = await resolve.json();
 
-      console.log(response);
+      // GET PARAM UNITS VALUE: IMPERIAL OR METRIC
+      let param = new URL(locationWeatherEndpoint).searchParams;
+      let unitParam = param.get("units");
+      // console.log(response);
+      return { unitParam, response };
     } catch (error) {
-      console.log(error.message);
+      // console.log(error.message);
+      return error.message;
     }
   }
-
-  async function getSevenDayWeather(long, lat) {
-    locationWeatherEndpoint = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&exclude=minutely,alerts&appid=${apiKey}`;
+  async function getSevenDayWeather(lat, lon) {
+    locationWeatherEndpoint = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,alerts&appid=${apiKey}&units=metric`;
     // console.log(`Longitude: ${locLongitude} ----- Latitude: ${locLatitude}`);
     try {
       let resolve = await fetch(locationWeatherEndpoint, { mode: "cors" });
       let response = await resolve.json();
+      // console.log(response);
+      // GET PARAM UNITS VALUE: IMPERIAL OR METRIC
+      let param = new URL(locationWeatherEndpoint).searchParams;
+      let unitParam = param.get("units");
 
-      console.log(response);
+      return { unitParam, response };
     } catch (error) {
-      console.log(error.message);
+      // console.log(error.message);
+      return error.message;
     }
   }
 
-  return { getCurrLocationWeather, toggleTempUnit };
+  return { getCurrLocationWeather, getSevenDayWeather, toggleTemp };
 })();
 
 export { apiFunctions };

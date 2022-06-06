@@ -3,12 +3,252 @@
   padding: 0;
   box-sizing: border-box;
 }
-.user-unit {
-  background-color: transparent;
-  border: 2px solid red;
-  outline: none;
-  font-size: 2rem;
+html {
+  scroll-behavior: smooth;
 }
-.user-unit.active {
-  background-color: aqua;
+body {
+  min-height: 100vh;
+  max-width: 100vw;
+  display: flex;
+  flex-direction: column;
+  color: #5b5c71;
+  background-color: #f4fffd;
+}
+a {
+  text-decoration: none;
+  font-size: 1.9rem;
+  color: #5b5c71;
+}
+header {
+  padding: 10px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.logo,
+.location,
+.temp-unit,
+.more-weather h3,
+.hourly h2,
+.daily-weather h2,
+footer {
+  font-family: "Yeseva One", cursive;
+}
+form,
+p {
+  font-family: "Josefin Sans", sans-serif;
+}
+.logo {
+  flex: 1 1 100px;
+  text-align: center;
+}
+form,
+.toggle-units {
+  flex: 1 1 200px;
+}
+form {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.input-row {
+  width: 80%;
+}
+input,
+button {
+  all: unset;
+  box-sizing: border-box;
+}
+input {
+  width: 100%;
+  border-bottom: 2px solid #ed254e;
+  padding: 4px 10px;
+  font-size: 1.2rem;
+  letter-spacing: 0.1rem;
+  transition: all 0.2s ease-in;
+}
+
+form button {
+  /*   background-color: red; */
+  cursor: pointer;
+  width: 20%;
+  text-align: center;
+  transition: all 0.2s ease-in;
+}
+svg {
+  fill: #5b5c71;
+}
+form button:hover svg {
+  fill: #ed254e;
+}
+.toggle-units {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.temp-unit {
+  cursor: pointer;
+  width: 50px;
+  background-color: #f4fffd;
+  border: 3px solid transparent;
+  border-radius: 20px;
+  outline: none;
+  font-size: 1.2rem;
+  text-align: center;
+  transition: all 0.2s ease-in;
+}
+.temp-unit.active {
+  border-color: #ed254e;
+}
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: stretch;
+  gap: 20px;
+  padding: 20px;
+}
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loc-heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.7rem;
+  letter-spacing: 0.1rem;
+}
+.curr-weather {
+  padding: 0 20px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.current {
+  flex: 1 1 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: stretch;
+}
+.current div {
+  /*   border: 2px solid gray; */
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-evenly;
+  align-content: space-around;
+  padding: 20px 0;
+}
+.weather-icon {
+  flex: 1 1 100px;
+}
+
+.weather {
+  flex: 1 1 180px;
+  gap: 5px;
+}
+.weather p:nth-child(1),
+.weather p:nth-child(3) {
+  font-size: 1.2rem;
+}
+.weather p:nth-child(2) {
+  font-size: 2.7rem;
+  font-weight: bold;
+}
+.weather p:nth-child(4)::first-letter {
+  text-transform: uppercase;
+}
+.more-weather {
+  flex: 1 1 120px;
+}
+.more-weather h3 {
+  margin-bottom: 18px;
+}
+.hourly {
+  flex: 1 1 100%;
+  display: flex;
+  flex-flow: row wrap;
+  gap: 5px;
+  padding: 10px 0;
+
+  /* glassmorphism */
+  background: rgba(245, 241, 240, 0.3);
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(52, 48, 48, 0.2);
+}
+.hourly h2 {
+  flex: 1 1 100%;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.hourly div {
+  flex: 1 1 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 5px;
+}
+.hourly div p:nth-of-type(1) {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+.daily-weather {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
+
+  /* glassmorphism */
+  background: rgba(245, 241, 240, 0.3);
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(52, 48, 48, 0.2);
+}
+.daily-weather h2 {
+  flex: 1 1 100%;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.daily-weather > div {
+  flex: 1 1 160px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+}
+.daily-weather div div:nth-child(1) p:nth-child(1) {
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.daily-weather div div:nth-child(2) span {
+  font-weight: bold;
+}
+.daily-weather div div:nth-child(3) p:first-letter {
+  text-transform: uppercase;
+}
+footer {
+  margin-top: auto;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  letter-spacing: 0.1rem;
 }

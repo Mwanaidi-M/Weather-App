@@ -5,47 +5,78 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;700&family=Yeseva+One&display=swap"
+      rel="stylesheet"
+    />
+
     <link rel="stylesheet" href="../src/style.css" />
+
     <title>Weather~M</title>
   </head>
   <body>
     <header>
-      <h1></h1>
+      <div class="logo">
+        <a href="#">M~Wthr</a>
+      </div>
+      <form action="post" id="user-form" autocomplete="off">
+        <div class="input-row">
+          <input
+            type="text"
+            name="user-input"
+            id="user-input"
+            required
+            placeholder="Find Location..."
+          />
+        </div>
+        <button type="submit">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M9.145 18.29c-5.042 0-9.145-4.102-9.145-9.145s4.103-9.145 9.145-9.145 9.145 4.103 9.145 9.145-4.102 9.145-9.145 9.145zm0-15.167c-3.321 0-6.022 2.702-6.022 6.022s2.702 6.022 6.022 6.022 6.023-2.702 6.023-6.022-2.702-6.022-6.023-6.022zm9.263 12.443c-.817 1.176-1.852 2.188-3.046 2.981l5.452 5.453 3.014-3.013-5.42-5.421z"
+            />
+          </svg>
+        </button>
+      </form>
+      <article class="toggle-units">
+        <button class="temp-unit" value="metric">°C</button>
+        <button class="temp-unit" value="imperial">°F</button>
+      </article>
     </header>
     <main>
-      <section class="form-area">
-        <form action="post" id="user-form" autocomplete="off">
-          <div class="input-row">
-            <input
-              type="text"
-              name="user-input"
-              id="user-input"
-              required
-              placeholder="Search Location..."
-            />
+      <!-- <section class="location">
+        <h1 id="location"></h1>
+      </section> -->
+      <!-- <section class="curr-weather">
+        <article class="current">
+          <div class="weather-icon">
+            <img src="" alt="current-weather" />
+            <p id="sunrise-tm"></p>
+            <p id="sunset-tm"></p>
           </div>
-          <button type="submit">Search</button>
-        </form>
-        <article class="toggle-units">
-          <!-- <input type="radio" name="user-unit " id="metric" value="metric" />
-          <label class="user-unit active" for="metric">Metric: °C, m/s</label>
-          <input
-            class="user-unit"
-            type="radio"
-            name="user-unit "
-            id="imperial"
-            value="imperial"
-          />
-          <label class="user-unit" for="imperial">Imperial: °F, mph</label> -->
-          <button class="user-unit active" value="metric">
-            Metric: °C, m/s
-          </button>
-          <button class="user-unit" value="imperial">Imperial: °F, mph</button>
+          <div class="weather">
+            <p id="date"></p>
+            <p id="w-temp"></p>
+            <p id="w-feels"></p>
+            <p id="w-desc"></p>
+          </div>
+          <div class="more-weather">
+            <p>MORE DETAILS</p>
+            <p id="wind-speed"></p>
+            <p id="air-humid"></p>
+            <p id="pressure"></p>
+          </div>
         </article>
+        <article class="hourly"></article>
       </section>
-      <section class="display-area">
-        <h2 class="location-name" id="loc-name"></h2>
-      </section>
+      <section class="daily-weather"></section>
+       -->
     </main>
     <footer>Dev by M_Idi</footer>
     <script src="bundle.js"></script>
