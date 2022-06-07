@@ -1,3 +1,7 @@
+/** IIFE containing async functions that call the API and return the response.json() that will be used
+ *  to display the response data to the frontend.
+ */
+
 const apiFunctions = (() => {
   const apiKey = "bd002ea5339cd4addc983023ce9c52e1";
   let defaultLocation = "zanzibar";

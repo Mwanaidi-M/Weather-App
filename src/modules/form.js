@@ -7,6 +7,7 @@ const formData = (() => {
 
   let locInput, tempUnit;
 
+  /** When the form is submitted, the location value is passed to the  getWeatherData() function.*/
   myForm.addEventListener("submit", (e) => {
     e.preventDefault();
     locInput = userInput.value;
@@ -15,6 +16,8 @@ const formData = (() => {
     displayWeather.getWeatherData(locInput);
   });
 
+  /** when the temp unit button is clicked, the value is picked as well as the location
+   *  and passed to the toggleTempUnit() function. */
   getTempUnits.forEach((unit) => {
     unit.addEventListener("click", () => {
       tempUnit = unit.value;

@@ -43,6 +43,7 @@ const displayWeather = (() => {
   // daily weather dom variables
   let dDay, dDate, dMin, dMax, dDesc;
 
+  /** Function to get location latitude & longitude */
   async function getCoords() {
     if (arguments.length == 1) {
       response = await apiFunctions.getCurrLocationWeather(arguments[0]);
@@ -64,6 +65,9 @@ const displayWeather = (() => {
     return locationCoordInfo;
   }
 
+  /** With the lat & lon returned, they are passed to the getSevenDayWeather() function to generate
+   *  response data then call the displayData() function to output this to the frontend.
+   */
   async function getWeatherData() {
     main.innerHTML = loader;
     if (arguments.length == 1) {
@@ -79,6 +83,9 @@ const displayWeather = (() => {
     displayData();
   }
 
+  /** calling the  getCoords() function to retrieve lat & lon the pass it to the toggleTemp() function
+   *  then display the response data to the frontend.
+   */
   async function toggleTempUnit(unit) {
     main.innerHTML = loader;
     if (arguments.length == 2) {
@@ -156,9 +163,13 @@ const displayWeather = (() => {
 
     if (typeof response === "string") {
       locTitle.innerHTML = `Oops! There was an issue attempting to fetch your result. Please try again.`;
+      currWeatherContainer.style.display = "none";
+      dailyWeatherContainer.style.display = "none";
       // console.log(response);
     } else if (response.response.cod >= 400) {
       locTitle.innerHTML = `City not found.Please enter a valid location e.g. Lamu`;
+      currWeatherContainer.style.display = "none";
+      dailyWeatherContainer.style.display = "none";
     } else {
       let currentDayData = response.response.current;
       let data12Hrs = response.response.hourly.slice(0, 12);
